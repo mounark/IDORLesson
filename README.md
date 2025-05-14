@@ -21,6 +21,8 @@ It is there in case you run into issues and do not want to spend any more time f
 6. Open up Google Chrome (preferred) or another browser.
 7. Type http://localhost:5000/
 8. From there it will be obvious what you need to do next.
-NOTE: While I am sure you can run python 2 instead of 3, I am running the newest version of Flask. You may run into issues because of this. Also using a different webbrowser than Chrome may cause issues as Chrome is the browser I tested this application most exstensively on.
+
+NOTE: While I am sure you can run python 2 instead of 3, I am running the newest version of Flask. You may run into issues because of this. 
+Also using a different web browser than Chrome may cause issues as Chrome is the browser I tested this application most exstensively on.
 # Run IDORFix If Needed
 IDORFix follows the same steps to run. It is important to not run both IDORFix and IDORissue at the same time. 
