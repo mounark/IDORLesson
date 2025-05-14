@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IDOR Demo Instructions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #173b6c; color: #ffffff; }
+        .container { max-width: 800px; }
+        code { color: #66afe9; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1>IDOR Demo Instructions</h1>
+        <p>This demo shows an <strong>Insecure Direct Object Reference (IDOR)</strong> vulnerability that is resolved in a Patient Portal. Follow these steps to explore the vulnerability:</p>
+        <ul>
+            <li>Log in with <strong>username: Alice Parker</strong>, <strong>password: pasthe$123</strong>.</li>
+            <li>View your profile at <code>/profile/1</code>.</li>
+            <li>Change the URL to  <code>/profile/2</code> to view Bob's profile.</li>
+            <li>Change the URL to  <code>/profile/3</code> to view Charlie's profile.</li>
+            <li>Each time you will get an error when you try to change to a different profile.</li>
+            <li>This is because this version is the fixed version.</li>
+            <li>If you want to play around with the version that has the vulnerability you can run IDOR instead.</li>
+        </ul>
+        <p><strong>Note:</strong> In real systems, IDs may be harder to guess, and such vulnerabilities can lead to serious data breaches.</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary" target="_blank" rel="noopener">Start Demo</a>
+    </div>
+</body>
+</html>
