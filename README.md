@@ -11,5 +11,5 @@ There are two project folders called IDOR and IDORFix. The IDOR folder has every
 
 The IDORFix version removes IDOR. You will not need to use this if instructions are followed as you will learn how to remove the issue.
 
-It is there in case you run into issues and do not want to spend any more time figuring out how to remove the 
+It is there in case you run into issues and do not want to spend any more time figuring out how to remove the IDOR vulnerability. 
 
