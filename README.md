@@ -13,10 +13,10 @@ The IDORFix version removes IDOR found in IDORissue. You will not need to use th
 
 It is there in case you run into issues and do not want to spend any more time figuring out how to remove the IDOR vulnerability. 
 
-1. Download both IDORissue and IDORFix just in case. If you are feeling confident then you can donwload just IDORissue.
-2. Save the file in a location you can easily access and remember.
+1. Download the project folder.
+2. Save the folder in a location you can easily access and remember.
 3. Open Terminal or Windows Terminal depending on what system you have.
-4. Move to that directory by either using the cd command as needed or the chdir command.
+4. Move to that directory by either using the cd command as needed or the chdir command. Then move to IDORissue.
 5. Finally run python3 app.py or py -3 app.py depending on what system and shell you are using.
 6. Open up Google Chrome (preferred) or another browser.
 7. Type http://localhost:5000/
@@ -25,4 +25,4 @@ It is there in case you run into issues and do not want to spend any more time f
 NOTE: While I am sure you can run python 2 instead of 3, I am running the newest version of Flask. You may run into issues because of this. 
 Also using a different web browser than Chrome may cause issues as Chrome is the browser I tested this application most exstensively on.
 # Run IDORFix If Needed
-IDORFix follows the same steps to run. It is important to not run both IDORFix and IDORissue at the same time. 
+IDORFix follows the same steps to run. You just navigate to IDORFix instead on IDORissue. It is important to not run both IDORFix and IDORissue at the same time. 
