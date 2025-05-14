@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IDOR Demo Instructions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #173b6c; color: #ffffff; }
+        .container { max-width: 800px; }
+        code { color: #66afe9; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1>IDOR Demo Instructions</h1>
+        <p>This demo shows an <strong>Insecure Direct Object Reference (IDOR)</strong> vulnerability in a Patient Portal. Follow these steps to explore the vulnerability:</p>
+        <ul>
+            <li>Log in with <strong>username: Alice Parker</strong>, <strong>password: pasthe$123</strong>.</li>
+            <li>View your profile at <code>/profile/1</code>.</li>
+            <li>Change the URL to  <code>/profile/2</code> to view Bob's profile.</li>
+            <li>Change the URL to  <code>/profile/3</code> to view Charlie's profile.</li>
+            <li>Notice how each time you change the URL you still see that you are logged in as Alice Parker.</li>
+            <li>This demonstrates IDOR because this application uses user-supplied input to access objects directly.</li>
+            <li>In this case the user is modifying which profile is being accessed by changing the number at the end of the URL.</li>
+            <li>The user is bypassing access control when they do this.</li>
+            <li>Now we will make the changes to remove this IDOR vulnerability.</li>
+            <li>The only file that needs to be changed is app.py and specifically the profile route: "@app.route("/profile/<int:user_id>")"</li>
+            <li>Some code needs to be added in the profile routes method before the first line inside. No code is deleted.</li>
+            <li>If you think you made the right change run the new code and see. If you did not you can continue to follow below.</li>
+            <li>Add the conditional statement, "if session["user"] != str(user_id):"</li>
+            <li>Inside it and indented add, "abort(403, "You are not authorized to access this profile.")"</li>
+            <li>Make sure that nothing else is changed. Run the program again and try to change the profiles like you did earlier.</li>
+            <li>Notice that you get an error message now and cannot exploit IDOR.</li>
+            <li>If you need the fixed version of the application and the code for it you can run IDORFix.</li>
+        </ul>
+        <p><strong>Note:</strong> In real systems, IDs may be harder to guess, and such vulnerabilities can lead to serious data breaches.</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary" target="_blank" rel="noopener">Start Demo</a>
+    </div>
+</body>
+</html>
