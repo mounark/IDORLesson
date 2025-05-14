@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}'s Patient Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #173b6c; color: #000000; }
+        .card { background-color: #22508c; border: none; color: #ffffff; }
+        .card-title { color: #ffffff; }
+        th, td { color: #000000; background-color: #ffffff; }
+        .footer-note { font-size: 0.85rem; color: #ffffff; }
+        .top-info {
+            position: absolute; top: 20px; left: 20px; max-width: 320px;
+            font-size: 0.9rem; background-color: #1c2e4a;
+            border-left: 4px solid #66afe9; padding: 1rem;
+            border-radius: 0.5rem; color: white;
+        }
+        code { color: #66afe9; }
+    </style>
+</head>
+<body>
+    <div class="top-info">
+        <strong>IDOR:</strong><br>
+        Insecure Direct Object Reference occurs when a user can access internal resources (e.g., patient IDs) without proper authorization.
+    </div>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="text-white"><strong>Logged in as:</strong> {{ users[session['user']]['username'] }}</p>
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Welcome to Your Health Portal, {{ user.username }}!</h3>
+                        <hr style="border-color: #ffffff;">
+                        <p><strong>Patient Email:</strong> {{ user.email }}</p>
+                        <h5 class="mt-4">Medical Records:</h5>
+                        <table class="table table-bordered mt-3">
+                            <thead class="table-primary">
+                                <tr><th>Condition</th><th>Treatment</th></tr>
+                            </thead>
+                            <tbody>
+                                {% for record in user.records %}
+                                <tr>
+                                    <td>{{ record.condition }}</td>
+                                    <td>{{ record.treatment }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-4" style="background-color:#1c2e4a; color:white; padding:1rem; border-left:4px solid #66afe9; border-radius:0.5rem;">
+                    <h5>⚠️ Insecure Direct Object Reference (IDOR)</h5>
+                    <p>This health portal is vulnerable to IDOR. Notice the URL pattern:</p>
+                    <p><code>/profile/1</code>, <code>/profile/2</code>, etc.</p>
+                    <p>Changing the ID in the address bar lets unauthorized users see other patients’ medical data.</p>
+                </div>
+                <div class="text-center mt-4 footer-note">
+                    Try visiting <code>/profile/1</code>, <code>/profile/2</code>, or <code>/profile/3</code> manually.
+                </div>
+                <p class="text-center mt-3">
+                    <a href="{{ url_for('instructions') }}" class="btn btn-info" target="_blank" rel="noopener">View Demo Instructions</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
